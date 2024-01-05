@@ -16,6 +16,19 @@ class Customer {
     this.notes = notes;
   }
 
+  get notes() {
+    return this._notes;
+  }
+
+  set notes(notes) {
+    if (!notes) {
+      this._notes = '';
+    }
+    else {
+      this._notes = notes;
+    }
+  }
+
   /** find all customers. */
 
   static async all() {
@@ -97,7 +110,7 @@ class Customer {
 
   /** get first name and last name of customer */
 
-  fullName() {
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 
