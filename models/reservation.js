@@ -40,7 +40,6 @@ class Reservation {
     return results.rows.map(row => new Reservation(row));
   }
 
-
   /** saves reservation edits  */
 
   async save() {

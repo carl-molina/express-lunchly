@@ -75,6 +75,10 @@ class Customer {
     return results.rows.map(c => new Customer(c));
   }
 
+  /** queries database to find top 10 customers w/ most reservations, sorts
+   *  from most reservations to lowest within 10 customers
+   */
+
   static async getTopTen() {
     const results = await db.query(
     `SELECT c.id,
@@ -91,7 +95,6 @@ class Customer {
 
       return results.rows.map(c => new Customer(c));
   }
-
 
   /** get first name and last name of customer */
 
