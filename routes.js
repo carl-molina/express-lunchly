@@ -60,6 +60,7 @@ router.get("/:id/", async function (req, res, next) {
   const customer = await Customer.get(req.params.id);
 
   const reservations = await customer.getReservations();
+  debugger;
 
   return res.render("customer_detail.html", { customer, reservations });
 });

@@ -39,16 +39,17 @@ class Reservation {
     else {
       this._startAt = startAt;
     }
+  }
 
+  get customerId() {
+    return this._customerId;
+  }
 
-    // console.log('startAt instanceof Date', startAt instanceof Date);
-    // console.log('startAt', startAt);
-    // if (!(startAt instanceof Date)) {
-    //   throw new Error("Must set start date to a value that's a Date object");
-    // }
-    // else {
-    //   this._startAt = startAt;
-    // }
+  set customerId(customerId) {
+    if (this._customerId) {
+      throw new Error("Customer id cannot be reassigned");
+    }
+    this._customerId = customerId;
   }
 
   /** formatter for startAt */
@@ -83,18 +84,15 @@ class Reservation {
             VALUES ($1, $2, $3, $4)
             RETURNING id`,
           [this.customerId, this.numGuests, this.startAt, this.notes],
-          // TODO: consider not being able to add/edit customer_id
       );
       this.id = result.rows[0].id;
     } else {
       await db.query(
             `UPDATE reservations
-            SET customer_id=$1,
-                num_guests=$2,
-                start_at=$3,
-                notes=$4
-            WHERE id = $5`, [
-            this.customerId,
+            SET num_guests=$1,
+                start_at=$2,
+                notes=$3
+            WHERE id = $4`, [
             this.numGuests,
             this.startAt,
             this.notes,
