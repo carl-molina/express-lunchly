@@ -28,6 +28,29 @@ class Reservation {
     this._numGuests = numGuests
   }
 
+  get startAt() {
+    return this._startAt;
+  }
+
+  set startAt(startAt) {
+    if (isNaN(startAt)) {
+      throw new Error("Must set start date to a value that's a Date object");
+    }
+    else {
+      this._startAt = startAt;
+    }
+
+
+    // console.log('startAt instanceof Date', startAt instanceof Date);
+    // console.log('startAt', startAt);
+    // if (!(startAt instanceof Date)) {
+    //   throw new Error("Must set start date to a value that's a Date object");
+    // }
+    // else {
+    //   this._startAt = startAt;
+    // }
+  }
+
   /** formatter for startAt */
 
   getFormattedStartAt() {
