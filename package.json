@@ -1,0 +1,25 @@
+{
+  "name": "lunchly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "^5.0.0-beta.1",
+    "lodash": "^4.17.21",
+    "moment": "*",
+    "morgan": "^1.10.0",
+    "nunjucks": "*",
+    "pg": "^8.11.3",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "jest": "*",
+    "supertest": "^6.3.3"
+  }
+}
