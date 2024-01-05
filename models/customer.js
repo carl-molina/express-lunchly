@@ -60,7 +60,6 @@ class Customer {
 
   static async getByName(searchText) {
     console.log('running getByName. search text:', searchText)
-    searchText = `%${searchText}%`
     const results = await db.query(
       `SELECT id,
               first_name AS "firstName",
@@ -70,7 +69,7 @@ class Customer {
        FROM customers
        WHERE CONCAT(first_name, ' ', last_name) ILIKE $1
        ORDER BY last_name, first_name`,
-       [searchText]
+       [`%${searchText}%`]
     );
     return results.rows.map(c => new Customer(c));
   }

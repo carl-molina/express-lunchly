@@ -49,6 +49,7 @@ class Reservation {
             VALUES ($1, $2, $3, $4)
             RETURNING id`,
           [this.customerId, this.numGuests, this.startAt, this.notes],
+          // TODO: consider not being able to add/edit customer_id
       );
       this.id = result.rows[0].id;
     } else {
