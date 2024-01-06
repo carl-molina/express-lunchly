@@ -8,9 +8,10 @@ const Reservation = require("./reservation");
 /** Customer of the restaurant. */
 
 class Customer {
-  constructor({ id, firstName, lastName, phone, notes }) {
+  constructor({ id, firstName, middleName, lastName, phone, notes }) {
     this.id = id;
     this.firstName = firstName;
+    this.middleName = middleName;
     this.lastName = lastName;
     this.phone = phone;
     this.notes = notes;
@@ -111,7 +112,13 @@ class Customer {
   /** get first name and last name of customer */
 
   get fullName() {
-    return `${this.firstName} ${this.lastName}`;
+    if (this.middleName) {
+      return `${this.firstName} ${this.middleName} ${this.lastName}`
+    }
+    else {
+      return `${this.firstName} ${this.lastName}`;
+    }
+
   }
 
   /** get all reservations for this customer. */
